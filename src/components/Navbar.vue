@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
+  <div id="my-nav">
+    <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
       <b-navbar-brand to="/">NavBar</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -11,7 +11,7 @@
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto" v-show="false">
+        <b-navbar-nav class="ml-auto" v-show="logged">
           <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
             <b-dropdown-item href="#">ES</b-dropdown-item>
@@ -28,7 +28,7 @@
             <b-dropdown-item href="#">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
-        <b-navbar-nav class="ml-auto" v-show="true">
+        <b-navbar-nav class="ml-auto" v-show="!logged">
           <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
             <b-dropdown-item href="#">ES</b-dropdown-item>
@@ -69,9 +69,29 @@
       BNavItemDropdown,
       BDropdownItem
     },
+    data() {
+      return {
+        logged: false
+      }
+    },
+    methods: {
+      sign_out() {
+        this.logged = false;
+      }
+    },
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
+  #my-nav {
+  padding: 30px;
+}
 
+#my-nav a {
+  font-weight: bold;
+}
+
+#my-nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
