@@ -8,9 +8,21 @@
       <router-link to="/login">Sign In</router-link>
     </div>
     -->
+    <Navbar/>
     <router-view/>
   </div>
 </template>
+
+<script>
+import Navbar from './components/Navbar';
+
+export default {
+  name: 'App',
+  components: {
+    Navbar,
+  },  
+}
+</script>
 
 <style>
 #app {
